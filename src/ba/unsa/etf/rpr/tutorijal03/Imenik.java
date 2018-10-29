@@ -4,8 +4,8 @@ package ba.unsa.etf.rpr.tutorijal03;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Imenik extend TelefonskBroj {
-    private HashMap<String, TelefonskiBroj> hmap = new HashMap<String, TelefonskiBroj>();
+public class Imenik extends TelefonskiBroj {
+    private HashMap<String, TelefonskiBroj> hmap = new HashMap<>();
     public void dodaj(String ime, TelefonskiBroj broj){
         hmap.put(ime, broj);
 
