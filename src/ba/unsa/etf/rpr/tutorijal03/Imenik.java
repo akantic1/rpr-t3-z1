@@ -1,11 +1,16 @@
 package ba.unsa.etf.rpr.tutorijal03;
 
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class Imenik extends TelefonskiBroj {
+public class Imenik  {
+
+
+    enum Grad{TRAVNIK,ORASJE,ZENICA,SARAJEVO,LIVNO,TUZLA,MOSTAR,BIHAC,GORAZDE,SIROKIBRIJEG,BRCKO}
     private HashMap<String, TelefonskiBroj> hmap = new HashMap<>();
+    public Imenik() {
+        hmap = new HashMap<>();
+    }
     public void dodaj(String ime, TelefonskiBroj broj){
         hmap.put(ime, broj);
 
@@ -29,6 +34,33 @@ public class Imenik extends TelefonskiBroj {
         }
         return vratiString;
     }
+
+
+    public Set<TelefonskiBroj> izGradaBrojevi(FiksniBroj.Grad g){
+        return null;
+    }
+    public Set<String> izGrada(FiksniBroj.Grad g) {
+        Set<String> skup = new TreeSet<>();
+        for (Map.Entry<String, TelefonskiBroj> e : hmap.entrySet()) {
+            TelefonskiBroj broj = e.getValue();
+            if (broj instanceof FiksniBroj) {
+                FiksniBroj broj2 = (FiksniBroj) broj;
+                if (broj2.getPozivniGrada().equals(broj2.getPozivniTrazenogGrada(g))) {
+                    skup.add(e.getKey());
+                }
+            }
+        }
+        List<String> lista = new ArrayList<>(skup);
+        Collections.sort(lista);
+        return skup;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
 
 
 }

@@ -20,4 +20,9 @@ public class MedunarodniBroj extends TelefonskiBroj {
     public int hashCode() {
         return drzava.hashCode()+broj.hashCode();
     }
+
+    @Override
+    public int compareTo(TelefonskiBroj o) {
+        return 0;
+    }
 }

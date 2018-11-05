@@ -1,33 +1,46 @@
 package ba.unsa.etf.rpr.tutorijal03;
 
 public class FiksniBroj extends TelefonskiBroj {
+    @Override
+    public int compareTo(TelefonskiBroj o) {
+        return 0;
+    }
+
+    enum Grad{TRAVNIK,ORASJE,ZENICA,SARAJEVO,LIVNO,TUZLA,MOSTAR,BIHAC,GORAZDE,SIROKIBRIJEG,BRCKO}
+
     private Grad grad;
     private String broj;
-     enum Grad{SARAJEVO, ZENICA, TUZLA, TRAVNIK, ORASJE, MOSTAR, BIHAC, GORAZDE, SIROKI , BRCKO ,LIVNO};
-    FiksniBroj(Grad grad, String broj){
-        this.grad = grad;
-        this.broj = broj;
+
+    private static String[] pozivni = { "030", "031", "032", "033", "034", "035", "036", "037", "038", "039", "049"};
+
+    public FiksniBroj(Grad grad, String broj){
+        this.grad=grad;
+        this.broj=broj;
     }
-    @Override
-    public String ispisi(){
-        String s = new String();
-        if(grad == 'SARAJEVO') s += "033/";
-         if(grad == 'ZENICA') s += "032/";
-        if(grad == 'TUZLA') s += "035/";
-        if(grad == 'TRAVNIK') s += "030/";
-        if(grad == 'ORASJE') s += "031/";
-        if(grad == 'MOSTAR') s += "036/";
-        if(grad == 'BIHAC') s += "037/";
-        if(grad == 'GORAZDE') s += "038/";
-        if(grad == 'SIROKI BRIJEG') s += "039/";
-        if(grad == 'LIVNO') s += "034/";
-        if(grad == 'BRCKO') s += "0349/";
-        s+=broj;
-        return s;
+
+    public String getPozivniGrada () {
+        return pozivni[grad.ordinal()];
+    }
+
+    public String getPozivniTrazenogGrada (Grad g) {
+        return pozivni[g.ordinal()];
     }
 
     @Override
-    public int hashCode() {
-        return grad.hashCode()+broj.hashCode();
+    public String ispisi () {
+        return pozivni[grad.ordinal()] + "/" + broj;
     }
+
+
+    @Override
+    public int hashCode(){
+        return broj.hashCode();
+    }
+
+
+
+
 }
+
+
+
